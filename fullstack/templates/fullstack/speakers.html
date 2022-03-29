@@ -1,0 +1,25 @@
+{% extends "fullstack/layout.html" %}
+{%load static%}
+{% block body %}
+
+ <!-- speakers -->
+        <section id="speakers" class="pt-4">
+            <h1 class="display-4 text-center my-5 text-muted">Speakers</h1>
+            <div class="row">
+             {% for speaker in v_speakers %}
+                <div class="col-md-6 col-lg-4">
+                    <div class="card mb-3">
+                        <img class="card-img-top" src="/static/img/{{speaker.avatar}}" alt="Vivianne">
+                        <div class="card-body">
+                            <a href="{% url 'speaker_detail' speaker.id %}">
+                                <h4 class="card-title">{{speaker.name}} {{speaker.lastname }}</h4>
+                            </a>
+                            <p class="card-text"> {{speaker.description}} </p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+            </div>
+        </section>
+        <!-- /speakers -->
+{% endblock %}

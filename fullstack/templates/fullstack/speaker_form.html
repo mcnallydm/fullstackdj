@@ -1,0 +1,15 @@
+{% extends "fullstack/layout.html" %}
+{%load static%}
+{% block body %}
+    <form action="{% url 'new_speaker' %}" method='POST'>{% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary my-5">Submit</button>
+    </form>
+    {% if form.errors %}
+    <div class="alert alert-danger my-5">
+        {{form.errors.name.as_text}} <br>
+        {{form.errors.description.as_text}}
+        
+    </div>
+    {% endif %}
+{% endblock %}

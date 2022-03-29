@@ -1,0 +1,14 @@
+{% extends "fullstack/layout.html" %}
+{%load static%}
+
+{% block body %}
+
+<form method='post'> {% csrf_token %}
+    {{form.as_p}}
+    <input type='submit' class = "btn btn-secondary"/>
+
+</form>
+
+
+
+{% endblock %}

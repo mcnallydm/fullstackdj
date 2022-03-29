@@ -1,0 +1,27 @@
+{% extends "fullstack/layout.html" %}
+
+{% block body %}
+ <!-- schedule -->
+        <section id="schedule" class="pt-4">
+            <h1 class="display-4 text-center my-5 text-muted">Schedule</h1>
+
+            <ul class="list-group">
+                {% for row in v_schedule %}
+                <li class="list-group-item"
+                        {% if row.bgcolor != "" %}
+                                style="background-color: #{{row.bgcolor}};"
+                        {% endif %}
+                >
+                    <div class="d-flex justify-content-between">
+                       
+                        <h5 class="mb-1">{{row.title}}: {{row.description}}</h5>
+                        <span class="badge badge-pill badge-info p-2">{{row.time}}</span>
+                    </div>
+                    <p class="mb-1">{{row.speaker.lastname}} {{row.speaker.name}}</p>
+                </li>
+               {% endfor %}
+            </ul>
+        </section>
+        <!-- /schedule -->
+
+{% endblock %}
