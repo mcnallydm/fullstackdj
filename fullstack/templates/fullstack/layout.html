@@ -29,10 +29,17 @@
         </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
-                    <a class="nav-item nav-link" href="{% url 'index' %}">Home <span class="sr-only">(current)</span></a>
-                    <a class="nav-item nav-link" href="{% url 'about' %}">About</a>
-                    <a class="nav-item nav-link" href="{% url 'speakers' %}">Speakers</a>
-                    <a class="nav-item nav-link" href="{% url 'schedule' %}">Schedule</a>
+                    <a class="nav-item nav-link" href="{% url 'index' %}" id="homelink">Home<span class="sr-only">(current)</span></a>
+                    <a class="nav-item nav-link" href="{% url 'about' %}" id="aboutlink">About</a>
+                    <div class="dropdown">
+                        <a class="nav-item nav-link dropdown-toggle" href="{% url 'speakers' %}" id="speakerlink" data-toggle="dropdown">Speakers</a>
+                        <ul class="dropdown-menu" aria-labelledby="speakerlink">
+                            {% for speaker in v_speakers %}
+                                <li><a class="dropdown-item" href="/speaker/{{ speaker.id }}">{{speaker.name}} {{speaker.lastname }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <a class="nav-item nav-link" href="{% url 'schedule' %}" id="schedulelink">Schedule</a>
                 </div>
             </div>
         </div>

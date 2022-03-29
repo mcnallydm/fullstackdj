@@ -19,11 +19,14 @@ def search(request):
         })
 
 def index(request):
-    return render(request, 'fullstack/index.html')
+    return render(request, 'fullstack/index.html', {
+        "v_speakers" : Speaker.objects.all()
+    })
 
 def schedule(request):
     return render(request, 'fullstack/schedule.html', {
-        "v_schedule" : Schedule.objects.all()
+        "v_schedule" : Schedule.objects.all(),
+        "v_speakers" : Speaker.objects.all()
     })
 
 def speakers(request):
@@ -37,14 +40,17 @@ def speaker_detail(request, speaker_id):
         # Query to the database using a where clause
         speaker = Speaker.objects.get(id=speaker_id)
     except Speaker.DoesNotExist:
-        raise Http404('pet not found')
+        raise Http404('speaker not found')
     return render(request, 'fullstack/speaker_detail.html', {
-        "v_speaker": speaker
+        "v_speaker": speaker,
+        "v_speakers" : Speaker.objects.all()
     })
 
 
 def about(request):
-    return render(request, 'fullstack/about.html')
+    return render(request, 'fullstack/about.html', {
+        "v_speakers" : Speaker.objects.all()
+    })
 
 
 class speakerCreateView(CreateView):
