@@ -36,6 +36,13 @@
                 </div>
             </div>
         </div>
+        <form class="text-center mr-2" method="POST" action="{% url 'search' %}">
+            {% csrf_token %}
+            <div class="input-group">
+                <input class="form-control" name="q" id="q" type="text" aria-describedby="srch">
+                <button type="submit" class="btn btn-light" id="srch">🔎︎</button>
+            </div>
+        </form>
         {% if user.is_authenticated %}
         <div class="text-white mx-2">
             Welcome, {{ user.username }}
@@ -45,13 +52,6 @@
         <a class='btn btn-outline-light' href="{% url 'signup' %}">Sign Up</a>
         <a class='btn btn-outline-light' href="{% url 'login' %}">Login</a>
         {% endif %}
-        <form class="text-center" method="POST" action="{% url 'search' %}">
-            {% csrf_token %}
-            <div class="input-group">
-                <input class="form-control" name="q" id="q" type="text">
-                <button type="submit" class="btn btn-light">Search</button>
-            </div>
-        </form>
     </nav>
     <!-- /navbar -->
 <!-- jumbotron -->
