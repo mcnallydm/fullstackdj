@@ -1,0 +1,15 @@
+{% extends "fullstack/layout.html" %}
+{%load static%}
+
+{% block body %}
+    <container>
+        <h1>{{ user.username }}</h1>
+        {% if user.avatar %}
+            <img class="" src="/static/img/{{ user.avatar }}" alt="{{ user.username }}">
+        {% endif %}
+        <h2>Bio
+        <button class="btn btn-outline-secondary" style="border-color: transparent;">&#9998</button>
+        </h2>
+        {{ user.bio }}
+    </container>
+{% endblock %}

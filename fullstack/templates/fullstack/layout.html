@@ -52,7 +52,7 @@
         </form>
         {% if user.is_authenticated %}
         <div class="text-white mx-2">
-            Welcome, {{ user.username }}
+            <a class="nav-item nav-link text-white" href="{% url 'profile' %}" id="profilelink">{{ user.username }}</a>
         </div>
         <a class='btn btn-outline-light' href="{% url 'logout' %}">Logout</a>
         {% else %}

@@ -8,6 +8,12 @@ from .forms import *
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth.forms import UserCreationForm
 
+def view_profile(request):
+    #us = User.objects.get(username=whichuser)
+    return render(request, "fullstack/profile.html", {
+        "v_speakers" : Speaker.objects.all()
+    })
+
 def search(request):
     if request.method == "POST":
         keyword = request.POST["q"]
@@ -69,5 +75,5 @@ class LogoutInterfaceView(LogoutView):
 
 class SignUpView(CreateView):
     form_class = UserCreationForm
-    template_name = 'fullstack/register.html'
+    template_name = 'fullstack/signup.html'
     success_url = '/fullstack'
