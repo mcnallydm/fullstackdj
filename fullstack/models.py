@@ -28,3 +28,6 @@ class MyUser(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     bio = models.CharField(max_length=500)
     avatar = models.CharField(max_length=300)
+    # If editing you'll have to query both tables
+    # Extend abstract user
+    # Read funky code at fadiacg on github
